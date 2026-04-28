@@ -356,12 +356,14 @@ def main():
                 last_year_val = total_achieved * (1 - abs(avg_yoy))
             variance = total_achieved - last_year_val
 
-            # Display all 3 values: Current, Last Year, Variance
+            # Format delta with sign
+            delta_str = f"+${variance:,.0f}" if variance >= 0 else f"-${abs(variance):,.0f}"
+
+            # Show metric with all values in label/value
             st.metric(
-                "📊 YoY Growth",
-                f"{avg_yoy:+.1%}",
-                delta=f"+${variance:,.0f}" if variance >= 0 else f"-${abs(variance):,.0f}",
-                help=f"Current: ${total_achieved:,.0f} | Last Year: ${last_year_val:,.0f} | Variance: ${variance:,.0f}"
+                label=f"📊 YoY Growth\nLast Year: ${last_year_val:,.0f}",
+                value=f"{avg_yoy:+.1%}",
+                delta=delta_str
             )
 
         st.markdown("---")
