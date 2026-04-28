@@ -342,7 +342,7 @@ def main():
         with col4:
             total_remaining = filtered_summary['Remaining YTG'].sum()
             st.metric(
-                "🎯 Remaining",
+                "🎯 Year-To-Go",
                 f"${total_remaining:,.0f}",
                 help="Year-to-Go remaining budget"
             )
